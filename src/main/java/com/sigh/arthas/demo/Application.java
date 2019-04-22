@@ -10,6 +10,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 import javax.jms.Message;
 
@@ -36,7 +37,7 @@ public class Application extends SpringBootServletInitializer implements Command
             Message message = new MNSTextMessage();
             message.setJMSMessageID(UUID.randomUUID().toString());
             listener.onMessage(message);
-            Thread.sleep(100);
+            TimeUnit.SECONDS.sleep(2);
         }
     }
 }
